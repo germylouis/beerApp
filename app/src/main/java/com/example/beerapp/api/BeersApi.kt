@@ -1,3 +1,5 @@
+//source https://medium.com/google-developer-experts/how-to-use-ktor-client-on-android-dcdeddc066b9
+
 package com.example.beerapp.api
 
 import com.example.beerapp.data.entities.Beer
