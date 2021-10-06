@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.31'
 }
 
 android {
@@ -70,6 +71,7 @@ dependencies {
     def ktor_version = "1.6.4"
     implementation("io.ktor:ktor-client-android:$ktor_version")
     implementation ("io.ktor:ktor-serialization:$ktor_version")
+    implementation ("io.ktor:ktor-gson:$ktor_version")
 
     // MockK - https://mockk.io/
     testImplementation "io.mockk:mockk:1.12.0"
