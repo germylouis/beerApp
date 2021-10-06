@@ -16,8 +16,15 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Hops(
+    @SerialName("name")
     val name: String,
+
+    @SerialName("amount")
     val amount: Amount,
+
+    @SerialName("add")
     val add: String,
+
+    @SerialName("attribute")
     val attribute: String
 )

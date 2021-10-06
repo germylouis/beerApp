@@ -16,7 +16,12 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Ingredients(
+    @SerialName("malt")
     val malt: List<Malt>,
+
+    @SerialName("hops")
     val hops: List<Hops>,
+
+    @SerialName("yeast")
     val yeast: String
 )

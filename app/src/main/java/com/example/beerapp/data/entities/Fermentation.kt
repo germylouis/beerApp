@@ -16,5 +16,5 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Fermentation(
-    val temp: Temp
+    @SerialName("temp") val temp: Temp
 )

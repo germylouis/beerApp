@@ -17,25 +17,66 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Beer(
-	val id: Int,
-	val name: String,
-	val tagline: String,
-	val first_brewed: String,
-	val description: String,
-	val image_url: String,
-	val abv: Double,
-	val ibu: Int,
-	val target_fg: Int,
-	val target_og: Int,
-	val ebc: Int,
-	val srm: Int,
-	val ph: Double,
-	val attenuation_level: Int,
-	val volume: Volume,
-	val boil_volume: Boil_volume,
-	val method: Method,
-	val ingredients: Ingredients,
-	val food_pairing: List<String>,
-	val brewers_tips: String,
-	val contributed_by: String
+    @SerialName("id")
+    val id: Int,
+
+    @SerialName("name")
+    val name: String,
+
+    @SerialName("tagline")
+    val tagline: String,
+
+    @SerialName("first_brewed")
+    val first_brewed: String,
+
+    @SerialName("description")
+    val description: String,
+
+    @SerialName("image_url")
+    val image_url: String,
+
+    @SerialName("abv")
+    val abv: Double,
+
+    @SerialName("ibu")
+    val ibu: Int,
+
+    @SerialName("target_fg")
+    val target_fg: Int,
+
+    @SerialName("target_og")
+    val target_og: Int,
+
+    @SerialName("ebc")
+    val ebc: Int,
+
+    @SerialName("srm")
+    val srm: Int,
+
+    @SerialName("ph")
+    val ph: Double,
+
+    @SerialName("attenuation_level")
+    val attenuation_level: Int,
+
+    @SerialName("volume")
+    val volume: Volume,
+
+    @SerialName("boil_volume")
+    val boil_volume: Boil_volume,
+
+    @SerialName("method")
+    val method: Method,
+
+    @SerialName("ingredients")
+    val ingredients: Ingredients,
+
+    @SerialName("food_pairing")
+    val food_pairing: List<String>,
+
+    @SerialName("brewers_tips")
+    val brewers_tips: String,
+
+    @SerialName("contributed_by")
+    val contributed_by: String
 )

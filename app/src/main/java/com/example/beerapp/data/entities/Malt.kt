@@ -16,6 +16,9 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Malt(
+    @SerialName("name")
     val name: String,
+
+    @SerialName("amount")
     val amount: Amount
 )

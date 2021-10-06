@@ -16,7 +16,12 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Method(
-	val mash_temp: List<Mash_temp>,
-	val fermentation: Fermentation,
-	val twist: String
+    @SerialName("mash_temp")
+    val mash_temp: List<Mash_temp>,
+
+    @SerialName("fermentation")
+    val fermentation: Fermentation,
+
+    @SerialName("twist")
+    val twist: String
 )

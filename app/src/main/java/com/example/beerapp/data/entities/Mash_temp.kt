@@ -16,6 +16,9 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Mash_temp(
-	val temp: Temp,
-	val duration: Int
+    @SerialName("temp")
+    val temp: Temp,
+
+    @SerialName("duration")
+    val duration: Int
 )

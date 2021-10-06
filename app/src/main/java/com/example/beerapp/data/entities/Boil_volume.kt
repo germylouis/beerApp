@@ -16,6 +16,9 @@ import kotlinx.serialization.*
 
 @Serializable
 data class Boil_volume(
-    val value: Int,
+    @SerialName("value") val
+    value: Int,
+
+    @SerialName("unit")
     val unit: String
 )
