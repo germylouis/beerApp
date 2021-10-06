@@ -16,7 +16,7 @@ package com.example.beerapp.data.entities
 import kotlinx.serialization.*
 
 @Serializable
-data class Json4Kotlin_Base(
+data class Beer(
 	val id: Int,
 	val name: String,
 	val tagline: String,
