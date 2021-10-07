@@ -1,15 +1,14 @@
 package com.example.beerapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.beerapp.R
 import com.example.beerapp.viewmodel.BeersViewModel
 import com.example.beerapp.viewmodel.ViewModelFactory
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: BeersViewModel

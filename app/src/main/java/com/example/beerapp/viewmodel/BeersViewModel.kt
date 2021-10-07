@@ -1,18 +1,15 @@
 package com.example.beerapp.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.beerapp.api.BeersApi
-import com.example.beerapp.data.entities.Beer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import com.example.beerapp.api.ktorHttpClient
-import kotlinx.coroutines.flow.*
+import com.example.beerapp.data.entities.Beer
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
 
 class BeersViewModel : ViewModel() {
 

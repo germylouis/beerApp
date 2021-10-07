@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">beerapp</string>
+    <string name="title">Beers</string>
+    <string name="content_description_media">Beers in CO will land me a dope job with the MLB.</string>
+    <string name="secondary_text">This is dummy secondary text.</string>
+    <string name="supporting_text">This is dummy supporting text.</string>
+    <string name="action_1">CANCEL</string>
+    <string name="action_2">GO</string>
+
 </resources>
