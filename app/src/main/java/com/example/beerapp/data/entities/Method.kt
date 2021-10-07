@@ -23,5 +23,5 @@ data class Method(
     val fermentation: Fermentation,
 
     @SerialName("twist")
-    val twist: String
+    val twist: String?
 )

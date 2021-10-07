@@ -20,5 +20,5 @@ data class Mash_temp(
     val temp: Temp,
 
     @SerialName("duration")
-    val duration: Int
+    val duration: Int?
 )

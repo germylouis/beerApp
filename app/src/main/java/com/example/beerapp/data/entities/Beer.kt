@@ -39,25 +39,25 @@ data class Beer(
     val abv: Double,
 
     @SerialName("ibu")
-    val ibu: Int,
+    val ibu: Double?,
 
     @SerialName("target_fg")
-    val target_fg: Int,
+    val target_fg: Double,
 
     @SerialName("target_og")
-    val target_og: Int,
+    val target_og: Double,
 
     @SerialName("ebc")
-    val ebc: Int,
+    val ebc: Int?,
 
     @SerialName("srm")
-    val srm: Int,
+    val srm: Double?,
 
     @SerialName("ph")
-    val ph: Double,
+    val ph: Double?,
 
     @SerialName("attenuation_level")
-    val attenuation_level: Int,
+    val attenuation_level: Double,
 
     @SerialName("volume")
     val volume: Volume,

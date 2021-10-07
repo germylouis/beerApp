@@ -17,7 +17,7 @@ import kotlinx.serialization.*
 @Serializable
 data class Amount(
     @SerialName("value")
-    val value: Int,
+    val value: Double,
 
     @SerialName("unit")
     val unit: String
