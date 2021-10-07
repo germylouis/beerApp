@@ -2,6 +2,7 @@
 
 package com.example.beerapp.api
 
+import androidx.lifecycle.MutableLiveData
 import com.example.beerapp.data.entities.Beer
 import io.ktor.client.*
 import io.ktor.client.request.*

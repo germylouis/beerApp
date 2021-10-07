@@ -9,25 +9,22 @@ import com.example.beerapp.data.entities.Beer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import com.example.beerapp.api.ktorHttpClient
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import kotlinx.coroutines.launch
 
 class BeersViewModel : ViewModel() {
 
     var TAG = "GERM: "
     var api: BeersApi = BeersApi(ktorHttpClient)
+    private val trigger = MutableLiveData<Beer>()
 
-    suspend fun getBeers() {
-        val data = api.getBeersKtor()
-        if (data == null) {
-            Log.d(TAG, "getBeers: null")
-        } else {
-            for (i in data) {
-                Log.d(TAG, "getBeers: ${i.name}")
-            }
-        }
-    }
+    suspend fun getBeers(): StateFlow<MutableList<Beer>> = flow {
+        emit(api.getBeersKtor())
+    }.stateIn(
+        scope = viewModelScope,
+        started = WhileSubscribed(5000), // Or Lazily because it's a one-shot
+        initialValue = mutableListOf()
+    )
 }
