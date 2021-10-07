@@ -5,25 +5,38 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.beerapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.beerapp.databinding.ActivityMainBinding
+import com.example.beerapp.ui.adapters.BeersAdapter
 import com.example.beerapp.viewmodel.BeersViewModel
 import com.example.beerapp.viewmodel.ViewModelFactory
 import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: BeersViewModel
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var manager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        manager = LinearLayoutManager(this)
 
         viewModel =
             ViewModelProvider(this, ViewModelFactory(application)).get(BeersViewModel::class.java)
 
         lifecycleScope.launchWhenCreated {
             viewModel.getBeers().collect { value ->
+                binding.beersRv.apply {
+                    adapter = BeersAdapter(value)
+                    layoutManager = manager
+                }
+
                 Log.d("Main", "onCreate: $value")
-              }
+            }
         }
     }
 }

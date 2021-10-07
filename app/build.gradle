@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.31'
+    id "org.jetbrains.kotlin.kapt"
 }
 
 android {
@@ -31,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -57,7 +62,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // Material Components
-    implementation 'com.google.android.material:material:1.5.0-alpha04'
+    implementation 'com.google.android.material:material:1.5.0-alpha02'
 
     // Navigation Components
     def navigation_version = '2.3.5'
