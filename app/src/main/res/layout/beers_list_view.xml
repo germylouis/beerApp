@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.adroid.com/apk/res-android"
+    xmlns:app1="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-        name="listItem"
-        type="com.example.beerapp.data.entities.Beer" />
+            name="listItem"
+            type="com.example.beerapp.data.entities.Beer" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        app1:cardPreventCornerOverlap="false"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:contentDescription="@string/content_description_media"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                app:loadImage="@{listItem.image_url}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
