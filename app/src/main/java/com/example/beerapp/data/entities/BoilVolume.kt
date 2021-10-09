@@ -12,13 +12,17 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 package com.example.beerapp.data.entities
 
-import kotlinx.serialization.*
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
-data class Boil_volume(
+@Parcelize
+data class BoilVolume(
     @SerialName("value") val
     value: Int,
 
     @SerialName("unit")
     val unit: String
-)
+) : Parcelable

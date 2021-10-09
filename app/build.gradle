@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.31'
     id "org.jetbrains.kotlin.kapt"
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -35,6 +36,7 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 }
 

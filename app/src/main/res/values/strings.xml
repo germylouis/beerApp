@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">beerapp</string>
     <string name="title">Beers</string>
-    <string name="content_description_media">Beers in CO will land me a dope job with the MLB.</string>
+
+
+    <string name="content_description_media">Beers API will land me a dope job with the MLB.</string>
     <string name="secondary_text">This is dummy secondary text.</string>
     <string name="supporting_text">This is dummy supporting text.</string>
-    <string name="action_1">CANCEL</string>
+    <string name="learn_more">LEARN MORE.</string>
     <string name="action_2">GO</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <!--  Beers Dialog Fragment  -->
+    <string name="ingredients">INGREDIENTS: </string>
+    <string name="ibu">IBU: </string>
+    <string name="food_pairings">FOOD PAIRINGS: </string>
 </resources>

@@ -12,6 +12,7 @@ import com.example.beerapp.ui.adapters.BeersAdapter
 import com.example.beerapp.viewmodel.BeersViewModel
 import com.example.beerapp.viewmodel.ViewModelFactory
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: BeersViewModel
@@ -28,6 +29,14 @@ class MainActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(this, ViewModelFactory(application)).get(BeersViewModel::class.java)
 
+//        lifecycleScope.launch {
+//            viewModel.action.collect { beers ->
+//                binding.beersRv.apply {
+//                    adapter = BeersAdapter(beers, null)
+//                    layoutManager = manager
+//                }
+//            }
+//        }
         lifecycleScope.launchWhenCreated {
             viewModel.getBeers().collect { value ->
                 binding.beersRv.apply {

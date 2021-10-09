@@ -1,15 +1,19 @@
 package com.example.beerapp.ui.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.beerapp.R
 import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.BeersListViewBinding
+import com.example.beerapp.ui.fragments.BeersFragment
 
 class BeersAdapter(private val beers: List<Beer>) :
     RecyclerView.Adapter<BeersAdapter.BeersViewHolder>() {
@@ -28,8 +32,19 @@ class BeersAdapter(private val beers: List<Beer>) :
 
     inner class BeersViewHolder(private val binding: BeersListViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        lateinit var bundle: Bundle
         fun bind(beer: Beer) {
             binding.listItem = beer
+            binding.learnMoreButton.setOnClickListener {
+                val activity = binding.root.context as FragmentActivity
+                val fragmentManager = activity.supportFragmentManager
+                val dialogFragment = BeersFragment()
+                bundle = Bundle()
+                bundle.putParcelable("beer", beer)
+                dialogFragment.arguments = bundle
+                dialogFragment.show(fragmentManager, "hi")
+                Toast.makeText(binding.root.context, "TODO", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

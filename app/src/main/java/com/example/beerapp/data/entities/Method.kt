@@ -12,16 +12,20 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 package com.example.beerapp.data.entities
 
-import kotlinx.serialization.*
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
+@Parcelize
 data class Method(
     @SerialName("mash_temp")
-    val mash_temp: List<Mash_temp>,
+    val mash_temp: List<MashTemp>,
 
     @SerialName("fermentation")
     val fermentation: Fermentation,
 
     @SerialName("twist")
     val twist: String?
-)
+) : Parcelable
