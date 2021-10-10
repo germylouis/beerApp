@@ -1,7 +1,6 @@
 package com.example.beerapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -29,23 +28,26 @@ class MainActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(this, ViewModelFactory(application)).get(BeersViewModel::class.java)
 
-//        lifecycleScope.launch {
-//            viewModel.action.collect { beers ->
-//                binding.beersRv.apply {
-//                    adapter = BeersAdapter(beers, null)
-//                    layoutManager = manager
-//                }
-//            }
-//        }
-        lifecycleScope.launchWhenCreated {
-            viewModel.getBeers().collect { value ->
+        lifecycleScope.launch {
+            viewModel.getBeers().collect { beers ->
                 binding.beersRv.apply {
-                    adapter = BeersAdapter(value)
+                    adapter = BeersAdapter(beers)
                     layoutManager = manager
                 }
-
-                Log.d("Main", "onCreate: $value")
             }
         }
+
+
+//        lifecycleScope.launchWhenCreated {
+//            viewModel.getBeers().collect { value ->
+//                binding.beersRv.apply {
+//                    adapter = BeersAdapter(value)
+//                    layoutManager = manager
+//                }
+//
+//                Log.d("Main", "onCreate: $value")
+//            }
+//        }
+
     }
 }

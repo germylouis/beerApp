@@ -36,10 +36,10 @@ data class Ingredients(
         var index = 1
         for (i in hops) {
             builder
-                .append("  ")
                 .append(index++)
-                .append(". ")
+                .append(") ")
                 .append(i.amount.value.toString())
+                .append(" ")
                 .append(i.amount.unit)
                 .append(" of ")
                 .append(i.name.uppercase(Locale.getDefault()))

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +42,6 @@ class BeersAdapter(private val beers: List<Beer>) :
                 bundle.putParcelable("beer", beer)
                 dialogFragment.arguments = bundle
                 dialogFragment.show(fragmentManager, "hi")
-                Toast.makeText(binding.root.context, "TODO", Toast.LENGTH_LONG).show()
             }
         }
     }
