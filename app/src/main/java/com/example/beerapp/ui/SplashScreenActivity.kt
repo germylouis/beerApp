@@ -33,7 +33,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun loadBeers() {
         lifecycleScope.launch {
             viewModel.getBeers().collect { beers ->
-                bundle.putParcelableArrayList("bundOfBeers", beers as ArrayList<out Parcelable>)
+                bundle.putParcelableArrayList("bundleOfBeers", beers as ArrayList<out Parcelable>)
                 mainIntent.putExtra("intentOfBeers", bundle)
                 when (beers != emptyList<Beer>()) {
                     true -> {

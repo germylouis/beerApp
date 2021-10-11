@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             binding.beersRv.apply {
                 adapter = BeersAdapter(
                     intent.getBundleExtra("intentOfBeers")
-                        ?.getParcelableArrayList<Beer>("bundOfBeers")
+                        ?.getParcelableArrayList<Beer>("bundleOfBeers")
                 )
                 layoutManager = manager
             }
