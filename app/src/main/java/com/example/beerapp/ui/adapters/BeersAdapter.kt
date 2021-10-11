@@ -13,8 +13,9 @@ import com.example.beerapp.R
 import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.BeersListViewBinding
 import com.example.beerapp.ui.fragments.BeersFragment
+import java.util.*
 
-class BeersAdapter(private val beers: List<Beer>) :
+class BeersAdapter(private val beers: ArrayList<Beer>?) :
     RecyclerView.Adapter<BeersAdapter.BeersViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeersViewHolder {
@@ -24,10 +25,10 @@ class BeersAdapter(private val beers: List<Beer>) :
     }
 
     override fun onBindViewHolder(holder: BeersViewHolder, position: Int) {
-        holder.bind(beers[position])
+        beers?.get(position)?.let { holder.bind(it) }
     }
 
-    override fun getItemCount(): Int = beers.size
+    override fun getItemCount(): Int = beers?.size ?: 0
 
     inner class BeersViewHolder(private val binding: BeersListViewBinding) :
         RecyclerView.ViewHolder(binding.root) {

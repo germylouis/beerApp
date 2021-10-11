@@ -1,22 +1,21 @@
 package com.example.beerapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.ActivityMainBinding
 import com.example.beerapp.ui.adapters.BeersAdapter
 import com.example.beerapp.viewmodel.BeersViewModel
-import com.example.beerapp.viewmodel.ViewModelFactory
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    lateinit var viewModel: BeersViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var manager: RecyclerView.LayoutManager
+    private lateinit var viewModel: BeersViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,19 +23,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         manager = LinearLayoutManager(this)
-
-        viewModel =
-            ViewModelProvider(this, ViewModelFactory(application)).get(BeersViewModel::class.java)
-
-        lifecycleScope.launch {
-            viewModel.getBeers().collect { beers ->
-                binding.beersRv.apply {
-                    adapter = BeersAdapter(beers)
-                    layoutManager = manager
-                }
-            }
+        if (intent.getBundleExtra("intentOfBeers") == null) {
+            Log.d("TAG", "onCreate: intent is null of beers :(")
         }
 
+        lifecycleScope.launch {
+            binding.beersRv.apply {
+                adapter = BeersAdapter(
+                    intent.getBundleExtra("intentOfBeers")
+                        ?.getParcelableArrayList<Beer>("bundOfBeers")
+                )
+                layoutManager = manager
+            }
+        }
 
 //        lifecycleScope.launchWhenCreated {
 //            viewModel.getBeers().collect { value ->

@@ -34,6 +34,11 @@ class BeersViewModel : ViewModel() {
 
     suspend fun getBeers(): StateFlow<MutableList<Beer>> = flow {
         val data = ktroApi.getBeersKtor()
+        if (data == emptyList<Beer>()){
+            Log.d(TAG, "getBeers: vm empty beers")
+        }else{
+            Log.d(TAG, "getBeers: not empty")
+        }
         emit(data)
     }.stateIn(
         scope = viewModelScope,
