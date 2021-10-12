@@ -6,16 +6,16 @@ import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object BeersRetroFitApi {
+object BeersRetroFitInstance {
 
-    var api: Api
+    var retrofitApi: RetrofitApi
 
     init {
-        api = createApiInstance(getInstance())
+        retrofitApi = createApiInstance(getInstance())
     }
 
-    private fun createApiInstance(mInstance: Retrofit): Api {
-        return mInstance.create<Api>(Api::class.java)
+    private fun createApiInstance(mInstance: Retrofit): RetrofitApi {
+        return mInstance.create<RetrofitApi>(RetrofitApi::class.java)
     }
 
     private fun getInstance(): Retrofit {
@@ -27,6 +27,6 @@ object BeersRetroFitApi {
     }
 
     suspend fun getBeersRetro(): Observable<MutableList<Beer>> {
-        return api.getBeersRetro()
+        return retrofitApi.getBeersRetro()
     }
 }

@@ -4,9 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.beerapp.api.BeersApi
-import com.example.beerapp.api.BeersRepo
-import com.example.beerapp.api.BeersRetroFitApi
-import com.example.beerapp.api.BeersRetroFitApi.api
 import com.example.beerapp.api.ktorHttpClient
 import com.example.beerapp.data.entities.Beer
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -16,24 +13,21 @@ import kotlinx.coroutines.launch
 
 class BeersViewModel : ViewModel() {
 
-    var TAG = "GERM: "
-
+    private val TAG = "BeersViewModel: "
     private val _action = MutableSharedFlow<MutableList<Beer>>(replay = 0)
     private val compositeDisposable = CompositeDisposable()
 
     var rxBeers: MutableList<Beer> = mutableListOf()
-
-    var ktroApi: BeersApi = BeersApi(ktorHttpClient)
-
+    var ktorApi: BeersApi = BeersApi(ktorHttpClient)
     val action: SharedFlow<MutableList<Beer>>
         get() = _action
 
     init {
-       // var api = BeersRepo()
+       // var retrofitApi = BeersRepo()
     }
 
     suspend fun getBeers(): StateFlow<MutableList<Beer>> = flow {
-        val data = ktroApi.getBeersKtor()
+        val data = ktorApi.getBeersKtor()
         if (data == emptyList<Beer>()){
             Log.d(TAG, "getBeers: vm empty beers")
         }else{
@@ -48,7 +42,7 @@ class BeersViewModel : ViewModel() {
 
       fun getBeersRx() {
 //        compositeDisposable.add(
-//            api.getBeersRetro().subscribe({ beers ->
+//            retrofitApi.getBeersRetro().subscribe({ beers ->
 //                rxBeers = beers
 //            },
 //                {
@@ -59,7 +53,7 @@ class BeersViewModel : ViewModel() {
 
     private fun openDetails() {
         viewModelScope.launch {
-            _action.emit(ktroApi.getBeersKtor())
+            _action.emit(ktorApi.getBeersKtor())
         }
     }
 

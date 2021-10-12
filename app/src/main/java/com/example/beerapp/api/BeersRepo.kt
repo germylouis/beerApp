@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class BeersRepo {
     suspend fun getBeers(): Observable<MutableList<Beer>> {
-        return BeersRetroFitApi.getBeersRetro()
+        return BeersRetroFitInstance.getBeersRetro()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

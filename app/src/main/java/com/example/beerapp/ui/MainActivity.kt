@@ -3,14 +3,12 @@ package com.example.beerapp.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.ActivityMainBinding
 import com.example.beerapp.ui.adapters.BeersAdapter
 import com.example.beerapp.viewmodel.BeersViewModel
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,14 +25,12 @@ class MainActivity : AppCompatActivity() {
             Log.d("TAG", "onCreate: intent is null of beers :(")
         }
 
-        lifecycleScope.launch {
-            binding.beersRv.apply {
-                adapter = BeersAdapter(
-                    intent.getBundleExtra("intentOfBeers")
-                        ?.getParcelableArrayList<Beer>("bundleOfBeers")
-                )
-                layoutManager = manager
-            }
+        binding.beersRv.apply {
+            adapter = BeersAdapter(
+                intent.getBundleExtra("intentOfBeers")
+                    ?.getParcelableArrayList<Beer>("bundleOfBeers")
+            )
+            layoutManager = manager
         }
 
 //        lifecycleScope.launchWhenCreated {

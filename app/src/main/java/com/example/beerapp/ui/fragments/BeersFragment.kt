@@ -10,11 +10,6 @@ import androidx.fragment.app.DialogFragment
 import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.FragmentBeersBinding
 
-
-/**
- * An example full-screen fragment that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
 class BeersFragment : DialogFragment() {
     private lateinit var binding: FragmentBeersBinding
 
@@ -24,7 +19,7 @@ class BeersFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBeersBinding.inflate(layoutInflater)
-        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val bundle: Bundle? = this.arguments
         if (bundle != null) {
             val bundlOfBeers: Beer? = bundle.getParcelable("beer")

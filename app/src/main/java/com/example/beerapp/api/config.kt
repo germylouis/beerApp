@@ -15,7 +15,6 @@ import io.ktor.http.*
 
 private const val TIME_OUT = 60_000
 
-
 val ktorHttpClient = HttpClient(Android) {
 
     install(JsonFeature) {

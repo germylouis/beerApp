@@ -3,7 +3,7 @@ package com.example.beerapp.api
 import junit.framework.TestCase
 import org.junit.Test
 
-class BeersApiTest : TestCase() {
+class BeersRetrofitApiTest : TestCase() {
 
     @Test
     fun testRoot() {
