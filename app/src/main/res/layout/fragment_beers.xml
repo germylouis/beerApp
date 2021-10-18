@@ -13,8 +13,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        >
+        android:layout_marginBottom="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,11 +26,11 @@
             <!-- Title, secondary and supporting text -->
 
 
-
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
                 android:text="@{beer.name}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="24sp"
@@ -39,6 +38,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Name" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_large"
+                app:layout_constraintBottom_toTopOf="@+id/ibu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <TextView
                 android:id="@+id/ibu"
@@ -49,9 +58,9 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name"
                 app:layout_constraintBottom_toTopOf="@+id/ibu_num"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
                 tools:text="@string/ibu" />
 
 
@@ -66,7 +75,7 @@
                 app:layout_constrainedHeight="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ibu"
-                tools:text="This will hold the description of the beer." />
+                tools:text="This will hold the IBU number." />
 
             <TextView
                 android:id="@+id/ingredients"
@@ -87,16 +96,17 @@
                 android:id="@+id/ingredients_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constrainedHeight="true"
                 android:padding="@dimen/padding_small"
                 android:text="@{beer.ingredients.toString()}"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
+                app:layout_constrainedHeight="true"
                 app:layout_constraintBottom_toTopOf="@+id/food_pairings_tag"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ingredients"
-                tools:text="This will hold the description of the beer." />
+                tools:text="This will hold the ingredients to make the beer."
+                />
 
             <TextView
                 android:id="@+id/food_pairings_tag"

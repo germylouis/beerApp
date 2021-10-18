@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beerapp.data.entities.Beer
 import com.example.beerapp.databinding.ActivityMainBinding
 import com.example.beerapp.ui.adapters.BeersAdapter
 import com.example.beerapp.viewmodel.BeersViewModel
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.beersRv.apply {
             adapter = BeersAdapter(
                 intent.getBundleExtra("intentOfBeers")
-                    ?.getParcelableArrayList<Beer>("bundleOfBeers")
+                    ?.getParcelableArrayList("bundleOfBeers")
             )
             layoutManager = manager
         }
